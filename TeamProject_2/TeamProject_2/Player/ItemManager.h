@@ -16,6 +16,7 @@ public :
 	void Render(HDC hdc);
 
 	bool IsCollision(Player* player);
+	void RandomItem(Player* player);
 
 private:
 	vector<Item*> items;
