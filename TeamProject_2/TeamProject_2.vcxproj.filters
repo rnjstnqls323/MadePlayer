@@ -30,25 +30,25 @@
     <ClInclude Include="Scenes\Scene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Object\Bullet.h">
+    <ClInclude Include="Objects\Bullet.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Object\Circle.h">
+    <ClInclude Include="Objects\Circle.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Scenes\ShootingScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Utility\GameManager.h">
+    <ClInclude Include="Utilities\GameManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Utility\Singleton.h">
+    <ClInclude Include="Utilities\Singleton.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Utility\Timer.h">
+    <ClInclude Include="Utilities\Timer.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Utility\Vector2.h">
+    <ClInclude Include="Utilities\Vector2.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -59,16 +59,16 @@
     <ClCompile Include="Scenes\ShootingScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Object\Bullet.cpp">
+    <ClCompile Include="Objects\Bullet.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Object\Circle.cpp">
+    <ClCompile Include="Objects\Circle.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Utility\GameManager.cpp">
+    <ClCompile Include="Utilities\GameManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Utility\Timer.cpp">
+    <ClCompile Include="Utilities\Timer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
