@@ -13,6 +13,7 @@ public:
 	~Item();
 
 	void Update();
+	void ItemCreate(Vector2 pos);
 
 	void UpgradeSpeed(Player* player);
 	void UpgradeBulletSpeed(Player* player);

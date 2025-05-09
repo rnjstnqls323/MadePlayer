@@ -17,6 +17,7 @@ public :
 
 	bool IsCollision(Player* player);
 	void RandomItem(Player* player);
+	void ItemCreate(Vector2 pos);
 
 private:
 	vector<Item*> items;

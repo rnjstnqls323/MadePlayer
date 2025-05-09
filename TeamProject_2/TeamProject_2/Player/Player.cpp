@@ -18,6 +18,7 @@ void Player::Update()
 {
 	Move();
 	pen = ChangePen();
+	ItemGet();
 	Render();
 }
 
@@ -51,16 +52,22 @@ void Player::DrawingPlayer()
 	HPEN oldPen = (HPEN)SelectObject(hdc,pen);
 	Vector2 leftAndUp = { center.x - radius ,center.y - radius };
 	Vector2 rightAndDown = { center.x + radius ,center.y + radius };
+
 	MoveToEx(hdc, center.x , leftAndUp.y, nullptr);
 	LineTo(hdc, leftAndUp.x, rightAndDown.y);
+
 	MoveToEx(hdc, center.x, leftAndUp.y , nullptr);
 	LineTo(hdc, rightAndDown.x, rightAndDown.y);
+
 	MoveToEx(hdc, leftAndUp.x, rightAndDown.y, nullptr);
 	LineTo(hdc, rightAndDown.x , rightAndDown.y);
+
 	MoveToEx(hdc, center.x, rightAndDown.y, nullptr);
 	LineTo(hdc, leftAndUp.x, center.y );
+
 	MoveToEx(hdc, center.x, rightAndDown.y, nullptr);
 	LineTo(hdc, rightAndDown.x , center.y);
+
 	MoveToEx(hdc, leftAndUp.x, center.y, nullptr);
 	LineTo(hdc, rightAndDown.x, center.y);
 
@@ -90,5 +97,8 @@ void Player::SpecialFire()
 
 void Player::ItemGet()
 {
-
+	if (ItemManager::Get()->IsCollision(this))
+	{
+		ItemManager::Get()->RandomItem(this);
+	}
 }
