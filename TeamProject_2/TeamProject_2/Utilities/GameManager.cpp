@@ -4,7 +4,7 @@
 
 GameManager::GameManager()
 {
-	hdc = GetDC(hWnd);	
+	hdc = GetDC(hWnd);
 
 	backBufferDC = CreateCompatibleDC(hdc);
 	backBufferBitmap = CreateCompatibleBitmap(hdc, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -17,7 +17,7 @@ GameManager::GameManager()
 
 GameManager::~GameManager()
 {
-	ReleaseDC(hWnd, hdc);		
+	ReleaseDC(hWnd, hdc);
 
 	delete scene;
 
@@ -39,12 +39,12 @@ void GameManager::Update()
 
 void GameManager::Render()
 {
-	PatBlt(backBufferDC, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, WHITENESS);	
+	PatBlt(backBufferDC, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, WHITENESS);
 
 	scene->Render(backBufferDC);
 	Timer::Get()->Render(backBufferDC);
 
-	BitBlt(hdc, 
+	BitBlt(hdc,
 		0, 0, SCREEN_WIDTH, SCREEN_HEIGHT,
 		backBufferDC, 0, 0, SRCCOPY);
 }

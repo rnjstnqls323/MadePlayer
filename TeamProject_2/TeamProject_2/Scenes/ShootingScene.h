@@ -10,5 +10,5 @@ public:
 	void Render(HDC hdc) override;
 
 private:
-	Player* player;	
+	Player* player;
 };

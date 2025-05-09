@@ -1,13 +1,16 @@
 ﻿// TeamProject_2.cpp : 애플리케이션에 대한 진입점을 정의합니다.
 //
 
-#include "framework.h"
+#include "Framework.h"
 #include "TeamProject_2.h"
 
 #define MAX_LOADSTRING 100
 
 // 전역 변수:
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
+HWND hWnd;                                      // 현재 창입니다.
+Vector2 mousePos;
+
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
 
@@ -42,16 +45,24 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     MSG msg;
 
-    // 기본 메시지 루프입니다:
-    while (GetMessage(&msg, nullptr, 0, 0))
+    GameManager* gameManager = new GameManager();
+
+    while (msg.message != WM_QUIT)
     {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
         {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
+            if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+            {
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
+            }
+        }
+        else
+        {
+            gameManager->Update();
+            gameManager->Render();
         }
     }
-
     return (int) msg.wParam;
 }
 
@@ -96,13 +107,22 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
+   WCHAR title[] = L"내 게임";
 
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+   RECT rect = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+   AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+
+   hWnd = CreateWindowW(szWindowClass, title, WS_OVERLAPPEDWINDOW,
+       100, 100,//시작 위치
+       rect.right - rect.left,
+       rect.bottom - rect.top,//창 크기
+       nullptr, nullptr, hInstance, nullptr);
+
+   SetMenu(hWnd, nullptr);
 
    if (!hWnd)
    {
-      return FALSE;
+       return FALSE;
    }
 
    ShowWindow(hWnd, nCmdShow);
@@ -110,7 +130,6 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    return TRUE;
 }
-
 //
 //  함수: WndProc(HWND, UINT, WPARAM, LPARAM)
 //
@@ -142,6 +161,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
         }
         break;
+    case WM_MOUSEMOVE:
+    {
+        mousePos.x = (float)LOWORD(lParam);
+        mousePos.y = (float)HIWORD(lParam);
+    }
+    break;
     case WM_PAINT:
         {
             PAINTSTRUCT ps;

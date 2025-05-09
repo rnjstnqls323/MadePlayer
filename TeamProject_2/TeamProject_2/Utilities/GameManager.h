@@ -14,7 +14,7 @@ private:
 	void Release();
 
 private:
-	HDC hdc;	
+	HDC hdc;
 
 	Scene* scene;
 

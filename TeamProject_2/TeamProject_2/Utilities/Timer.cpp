@@ -6,7 +6,7 @@ Timer::Timer()
 	QueryPerformanceFrequency((LARGE_INTEGER*)&preriodFrequency);
 	//현재 CPU 진동수를 반환하는 함수
 	QueryPerformanceCounter((LARGE_INTEGER*)&lastTime);
-	timeScale = 1.0f / preriodFrequency;	
+	timeScale = 1.0f / preriodFrequency;
 }
 
 Timer::~Timer()

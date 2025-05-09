@@ -14,10 +14,10 @@ void Circle::Render(HDC hdc)
 {
 	if (!isActive) return;
 
-	Ellipse(hdc, 
+	Ellipse(hdc,
 		center.x - radius, center.y - radius,//LeftTop
 		center.x + radius, center.y + radius//RightBottom
-	);	
+	);
 }
 
 bool Circle::IsCollisionPoint(POINT point)
@@ -39,5 +39,5 @@ bool Circle::IsCollisionCircle(Circle* circle)
 	//float distance = sqrt(dx * dx + dy * dy);
 	//return distance <= (radius + circle->GetRadius());
 
-	return (dx * dx + dy * dy) <= ((radius + circle->radius) * (radius + circle->radius));	
+	return (dx * dx + dy * dy) <= ((radius + circle->radius) * (radius + circle->radius));
 }

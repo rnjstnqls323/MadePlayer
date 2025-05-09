@@ -5,10 +5,12 @@ struct Vector2
 	float x;
 	float y;
 
-	Vector2() : x(0), y(0) 
-	{}
+	Vector2() : x(0), y(0)
+	{
+	}
 	Vector2(float x, float y) : x(x), y(y)
-	{}
+	{
+	}
 
 	Vector2 operator+(const Vector2& other) const
 	{
@@ -39,7 +41,7 @@ struct Vector2
 		y *= scala;
 	}
 
-	float Magnitude() const	{ return sqrt(x * x + y * y); }
+	float Magnitude() const { return sqrt(x * x + y * y); }
 	float SqrMagnitude() const { return x * x + y * y; }
 
 	void Normalize()
@@ -62,7 +64,7 @@ struct Vector2
 
 	static const Vector2 Zero() { return Vector2(0, 0); }
 	static const Vector2 One() { return Vector2(1, 1); }
-		   
+
 	static const Vector2 Right() { return Vector2(1, 0); }
 	static const Vector2 Left() { return Vector2(-1, 0); }
 	static const Vector2 Down() { return Vector2(0, 1); }

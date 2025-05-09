@@ -9,7 +9,7 @@ private:
 public:
 	void Update();
 	void Render(HDC hdc);
-	
+
 	float GetElapsedTime() { return elapsedTime; }
 
 private:
@@ -20,7 +20,7 @@ private:
 	float elapsedTime = 0.0f;
 	float oneSecondCount = 0.0f;
 	float deltaScale = 1.0f;
-		
+
 	__int64 currentTime = 0;
 	__int64 lastTime = 0;
 	__int64 preriodFrequency = 0;

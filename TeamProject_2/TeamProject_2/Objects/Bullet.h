@@ -19,7 +19,7 @@ public:
 	}
 
 	string GetTag() { return tag; }
-	void SetTag(string tag) { this->tag = tag; }	
+	void SetTag(string tag) { this->tag = tag; }
 
 private:
 	string tag;
