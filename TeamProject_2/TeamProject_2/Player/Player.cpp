@@ -19,12 +19,13 @@ void Player::Update()
 	Move();
 	pen = ChangePen();
 	ItemGet();
-	Render();
+	Render(hdc);
 }
 
-void Player::Render()
+void Player::Render(HDC hdc)
 {
-	DrawingPlayer();
+	DrawingPlayer(hdc);
+
 }
 
 void Player::Move()
@@ -47,8 +48,11 @@ void Player::Move()
 	}
 }
 
-void Player::DrawingPlayer()
+void Player::DrawingPlayer(HDC hdc)
 {
+	printf("Player Draw at (%.1f, %.1f)\n", center.x, center.y);
+
+
 	HPEN oldPen = (HPEN)SelectObject(hdc,pen);
 	Vector2 leftAndUp = { center.x - radius ,center.y - radius };
 	Vector2 rightAndDown = { center.x + radius ,center.y + radius };
@@ -83,7 +87,7 @@ HPEN Player::ChangePen()
 
 void Player::Fire()
 {
-	//ÃÑ½ð°Å ±¸Çö
+	BulletManager::Get()->Fire(center);
 }
 
 void Player::SpecialFire()
@@ -97,8 +101,25 @@ void Player::SpecialFire()
 
 void Player::ItemGet()
 {
-	if (ItemManager::Get()->IsCollision(this))
+	ItemType getItem = ItemManager::Get()->GetItem(this);
+
+	switch (getItem)
 	{
-		ItemManager::Get()->RandomItem(this);
+	case PlayerSpeed:
+		speed += 5.0f * DELTA;
+		break;
+	case BulletSpeed:
+		bulletSpeed += 5.0f * DELTA;
+		break;
+	case BulletPower:
+		bulletPower += 5;
+		break;
+	case AddGun:
+		// ÃÑ Ãß°¡ ±¸Çö
+		break;
+	case End:
+		break;
+	default:
+		break;
 	}
 }

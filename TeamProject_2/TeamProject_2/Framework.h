@@ -24,6 +24,7 @@ using namespace std;
 #include "Utilities/Singleton.h"
 #include "Utilities/Timer.h"
 #include "Utilities/Vector2.h"
+#include "Utilities/enum.h"
 
 #include "Objects/Circle.h"
 #include "Objects/Bullet.h"
@@ -32,8 +33,11 @@ using namespace std;
 #include "Player/Item.h"
 
 #include "Scenes/Scene.h"
-#include "Utilities/GameManager.h"
+
 #include "Player/ItemManager.h"
+#include "Objects/BulletManager.h"
+
+#include "Utilities/GameManager.h"
 
 extern HWND hWnd;
 extern HDC hdc;

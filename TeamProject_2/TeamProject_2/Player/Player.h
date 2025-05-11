@@ -13,7 +13,7 @@ public:
 	~Player();
 
 	void Update();
-	void Render();
+	void Render(HDC hdc);
 
 	float GetSpeed() { return speed; }
 	float GetBulletSpeed() { return bulletSpeed; }
@@ -24,7 +24,7 @@ public:
 	int SetBulletPower(int newPower) { bulletPower = newPower; }
 
 	void Move();
-	void DrawingPlayer();
+	void DrawingPlayer(HDC hdc);
 	HPEN ChangePen();
 
 	void Fire();

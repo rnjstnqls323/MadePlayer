@@ -133,6 +133,7 @@
     <ClInclude Include="Enemy\Enemy.h" />
     <ClInclude Include="Framework.h" />
     <ClInclude Include="Objects\Bullet.h" />
+    <ClInclude Include="Objects\BulletManager.h" />
     <ClInclude Include="Objects\Circle.h" />
     <ClInclude Include="Player\Item.h" />
     <ClInclude Include="Player\ItemManager.h" />
@@ -142,6 +143,7 @@
     <ClInclude Include="Scenes\ShootingScene.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TeamProject_2.h" />
+    <ClInclude Include="Utilities\enum.h" />
     <ClInclude Include="Utilities\GameManager.h" />
     <ClInclude Include="Utilities\Singleton.h" />
     <ClInclude Include="Utilities\Timer.h" />
@@ -152,6 +154,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Objects\Bullet.cpp" />
+    <ClCompile Include="Objects\BulletManager.cpp" />
     <ClCompile Include="Objects\Circle.cpp" />
     <ClCompile Include="Player\Item.cpp" />
     <ClCompile Include="Player\ItemManager.cpp" />
