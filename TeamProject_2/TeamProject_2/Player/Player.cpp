@@ -17,7 +17,7 @@ Player::~Player()
 void Player::Update()
 {
 	Move();
-	pen = ChangePen();
+	pen = ChangePen(); //이렇게 사용이되나?
 	ItemGet();
 	Render(hdc);
 }
@@ -25,7 +25,9 @@ void Player::Update()
 void Player::Render(HDC hdc)
 {
 	DrawingPlayer(hdc);
-
+	Fire();
+	ShowHealthPointBar();
+	ShowSpacialGaugeBar();
 }
 
 void Player::Move()
@@ -81,7 +83,7 @@ void Player::DrawingPlayer(HDC hdc)
 
 HPEN Player::ChangePen()
 {
-	// 이거 총알 닿았으면 damagePen으로 리턴하게하는거 if (IsCollisionCircle()) return damagePen; 
+	if (BulletManager::Get()->IsCollision(this, "player")) return damagePen; 
 	return originalPen;
 }
 
@@ -122,4 +124,12 @@ void Player::ItemGet()
 	default:
 		break;
 	}
+}
+
+void Player::ShowHealthPointBar()
+{
+}
+
+void Player::ShowSpacialGaugeBar()
+{
 }
