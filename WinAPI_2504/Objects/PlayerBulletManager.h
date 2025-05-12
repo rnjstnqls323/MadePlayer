@@ -1,0 +1,26 @@
+#pragma once
+
+
+class PlayerBulletManager : public Singleton<PlayerBulletManager>
+{
+	friend class Singleton;
+
+private:
+	const int BULLET_POOL_SIZE = 100;
+
+private:
+	PlayerBulletManager();
+	~PlayerBulletManager();
+
+public:
+	void Update();
+	void Render(HDC hdc);
+
+	bool IsCollision(Circle* circle);
+
+	void Fire(Vector2 pos);
+	void CircleFire(Vector2 pos);
+
+private:
+	vector<Bullet*> bullets;
+};

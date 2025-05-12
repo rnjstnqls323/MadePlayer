@@ -31,27 +31,35 @@ void ItemManager::Update()
 	spawnTime += DELTA;
 	if (spawnTime > 3.0f)
 	{
+		spawnTime = 0.0f;
 
+		for (Item* item : items)
+		{
+			if (!item->IsActive())
+			{
+				Vector2 spawnPos = { (float)(rand() % SCREEN_WIDTH), (float)(rand() % SCREEN_HEIGHT) };
+				item->Spawn(spawnPos);
+				break;
+			}
+		}
 	}
-}
 
-bool ItemManager::IsCollision(Player* player)
-{
-	for (Item* item : items)
+	/*for (Item* item : items)
 	{
-		if (!item->IsCollisionCircle(player) || !item->IsActive())
-			continue;
-		return true;
-	}
-	return false;
+		if (item->IsActive())
+			item->Update();
+	}*/
 }
+
 
 ItemType ItemManager::GetItem(Player* player)
 {
 	for (Item* item : items)
 	{
-		if (IsCollision(player))
-			return item->GetItemTag();
+		if (!item->IsCollisionCircle(player) || !item->IsActive())
+			continue;
+		item->SetActive(false);
+		return item->GetItemTag();
 	}
 	return ItemType(End);
 }

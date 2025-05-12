@@ -31,6 +31,7 @@ using namespace std;
 #include "Objects/BulletManager.h"
 #include "Objects/Enemy.h"
 #include "Objects/EnemyManager.h"
+#include "Objects/PlayerBulletManager.h"
 
 #include "Objects/Item.h"
 #include "Objects/ItemManager.h"

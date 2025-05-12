@@ -14,7 +14,6 @@ private:
 public:
 	void Render(HDC hdc);
 	void Update();
-	bool IsCollision(Player* player);
 	ItemType GetItem(Player* player);
 
 private:

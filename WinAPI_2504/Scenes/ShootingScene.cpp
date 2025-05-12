@@ -6,6 +6,7 @@ ShootingScene::ShootingScene()
 	player = new Player();	
 
 	BulletManager::Get();
+	PlayerBulletManager::Get();
 	EnemyManager::Get()->SetPlayer(player);
 	ItemManager::Get();
 }
@@ -15,6 +16,7 @@ ShootingScene::~ShootingScene()
 	delete player;
 
 	BulletManager::Delete();
+	PlayerBulletManager::Delete();
 	EnemyManager::Delete();
 	ItemManager::Delete();
 }
@@ -24,6 +26,7 @@ void ShootingScene::Update()
 	player->Update();
 
 	BulletManager::Get()->Update();
+	PlayerBulletManager::Get()->Update();
 	EnemyManager::Get()->Update();
 	ItemManager::Get()->Update();
 }
@@ -33,6 +36,7 @@ void ShootingScene::Render(HDC hdc)
 	player->Render(hdc);
 
 	BulletManager::Get()->Render(hdc);
+	PlayerBulletManager::Get()->Render(hdc);
 	EnemyManager::Get()->Render(hdc);
 	ItemManager::Get()->Render(hdc);
 }

@@ -146,6 +146,7 @@
     <ClInclude Include="Objects\ItemManager.h" />
     <ClInclude Include="Objects\PaintTool.h" />
     <ClInclude Include="Objects\Player.h" />
+    <ClInclude Include="Objects\PlayerBulletManager.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scenes\Scene.h" />
     <ClInclude Include="Scenes\ShootingScene.h" />
@@ -168,6 +169,7 @@
     <ClCompile Include="Objects\ItemManager.cpp" />
     <ClCompile Include="Objects\PaintTool.cpp" />
     <ClCompile Include="Objects\Player.cpp" />
+    <ClCompile Include="Objects\PlayerBulletManager.cpp" />
     <ClCompile Include="Scenes\ShootingScene.cpp" />
     <ClCompile Include="WinAPI_2504.cpp" />
   </ItemGroup>
