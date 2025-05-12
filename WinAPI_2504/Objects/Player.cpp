@@ -31,19 +31,19 @@ void Player::Render(HDC hdc)
 
 void Player::Move()
 {
-	if (GetAsyncKeyState(VK_LEFT) && center.x > 0)
+	if (GetAsyncKeyState(VK_LEFT) && center.x-radius > 0)
 	{
 		center.x -= DELTA * speed;
 	}
-	else if (GetAsyncKeyState(VK_RIGHT) && center.x < SCREEN_WIDTH)
+	else if (GetAsyncKeyState(VK_RIGHT) && center.x+radius < SCREEN_WIDTH)
 	{
 		center.x += DELTA * speed;
 	}
-	else if (GetAsyncKeyState(VK_UP) && center.y > 0)
+	else if (GetAsyncKeyState(VK_UP) && center.y-radius > 0)
 	{
 		center.y -= DELTA * speed;
 	}
-	else if (GetAsyncKeyState(VK_DOWN) && center.y < SCREEN_HEIGHT)
+	else if (GetAsyncKeyState(VK_DOWN) && center.y+radius < SCREEN_HEIGHT)
 	{
 		center.y += DELTA * speed;
 	}
@@ -123,10 +123,10 @@ void Player::ItemGet()
 	switch (getItem)
 	{
 	case PlayerSpeed:
-		speed += 5.0f * DELTA;
+		speed += 10.0f;
 		break;
 	case BulletSpeed:
-		bulletSpeed += 5.0f * DELTA;
+		bulletSpeed += 5.0f;
 		break;
 	case BulletPower:
 		bulletPower += 5;
