@@ -79,6 +79,41 @@ void PlayerBulletManager::Fire(Vector2 pos)
 	}
 }
 
+void PlayerBulletManager::DownFire(Vector2 pos)
+{
+	for (Bullet*& bullet : bullets)
+	{
+		if (!bullet->IsActive())
+		{
+			Vector2 direction = Vector2::Down();
+			bullet->Fire(pos,direction);
+			break;
+		}
+	}
+}
+
+void PlayerBulletManager::CrossFire(Vector2 pos)
+{
+	float angleStep = 360.0f / 4; // 각 총알 간의 각도 차이
+	float degreeToRadian = 3.141592f / 180.0f;
+	int fired = 0;
+	for (Bullet*& bullet : bullets)
+	{
+		if (!bullet->IsActive())
+		{
+			float angle = angleStep * fired; // 현재 총알의 발사 각도
+			float radian = angle * degreeToRadian;
+
+			Vector2 direction = Vector2(cosf(radian), sinf(radian));
+			bullet->Fire(pos, direction); // 방향을 지정해서 발사
+			fired++;
+
+			if (fired >= 4)
+				break;
+		}
+	}
+}
+
 void PlayerBulletManager::CircleFire(Vector2 pos)
 {
 	float angleStep = 360.0f / 12; // 각 총알 간의 각도 차이

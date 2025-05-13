@@ -11,7 +11,7 @@ enum BulletType {
 	UpBullet,
 	DownBullet,
 	ShotGunBullet,
-	CrossShooting,
+	CrossBullet,
 	CrazyBullet,
 	CircleBullet,
 	EndBullet

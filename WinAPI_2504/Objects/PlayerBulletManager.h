@@ -19,7 +19,10 @@ public:
 	bool IsCollision(Circle* circle);
 
 	void Fire(Vector2 pos);
+	void DownFire(Vector2 pos);
+	void CrossFire(Vector2 pos);  
 	void CircleFire(Vector2 pos);
+
 
 private:
 	vector<Bullet*> bullets;

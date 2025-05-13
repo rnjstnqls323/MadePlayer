@@ -52,5 +52,5 @@ private:
 	HPEN originalPen;
 	HPEN damagePen;
 
-	BulletType gunState = CircleBullet;
+	BulletType gunState = CrossBullet;
 };

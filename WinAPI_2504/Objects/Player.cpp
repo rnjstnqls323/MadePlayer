@@ -105,19 +105,20 @@ void Player::Fire()
 		PlayerBulletManager::Get()->Fire({center.x,center.y-radius});
 		break;
 	case DownBullet:
-
+		PlayerBulletManager::Get()->DownFire({ center.x,center.y + radius });
 		break;
 	case ShotGunBullet:
 		break;
-	case CrossShooting:
+	case CrossBullet:
+		PlayerBulletManager::Get()->CrossFire({ center.x,center.y });
 		break;
 	case CrazyBullet:
 		break;
 	case CircleBullet:
 		PlayerBulletManager::Get()->CircleFire(center);
 		break;
+
 	case EndBullet:
-		break;
 	default:
 		break;
 	}
