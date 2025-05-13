@@ -29,7 +29,6 @@ void Player::Render(HDC hdc)
 	DrawingPlayer(hdc);
 
 	ShowHealthPointBar();
-	ShowSpacialGaugeBar();
 }
 
 void Player::Move()
@@ -108,11 +107,13 @@ void Player::Fire()
 		PlayerBulletManager::Get()->DownFire({ center.x,center.y + radius });
 		break;
 	case ShotGunBullet:
+		PlayerBulletManager::Get()->ShotGunFire(center);
 		break;
 	case CrossBullet:
-		PlayerBulletManager::Get()->CrossFire({ center.x,center.y });
+		PlayerBulletManager::Get()->CrossFire(center);
 		break;
 	case CrazyBullet:
+		PlayerBulletManager::Get()->CrazyFire(center);
 		break;
 	case CircleBullet:
 		PlayerBulletManager::Get()->CircleFire(center);
@@ -126,14 +127,14 @@ void Player::Fire()
 	countFireTime = 0.0f;
 }
 
-void Player::SpecialFire()
-{
-	if (GetAsyncKeyState('Q') && spacialGauge == MAX_SPACIAL_GAUGE)
-	{
-		// bulletmanager에서 일시적으로 나가는 선을 구현할까 음 레이저? 아니면 엄청 큰 총알?
-		spacialGauge = 0;
-	}
-}
+//void Player::SpecialFire()
+//{
+//	if (GetAsyncKeyState('Q') && spacialGauge == MAX_SPACIAL_GAUGE)
+//	{
+//		// bulletmanager에서 일시적으로 나가는 선을 구현할까 음 레이저? 아니면 엄청 큰 총알?
+//		spacialGauge = 0;
+//	}
+//}
 
 void Player::ItemGet()
 {
@@ -157,7 +158,10 @@ void Player::ItemGet()
 		bulletPower += 5;
 		break;
 	case ChangeGun:
-		// 총 추가 구현
+	{
+		int random = rand() % (int)BulletType::EndBullet;
+		gunState = (BulletType)random;
+	}
 		break;
 	case End:
 		break;
@@ -170,6 +174,6 @@ void Player::ShowHealthPointBar()
 {
 }
 
-void Player::ShowSpacialGaugeBar()
-{
-}
+//void Player::ShowSpacialGaugeBar()
+//{
+//}

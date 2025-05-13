@@ -24,4 +24,6 @@ public:
 private:
 	string tag;
 	Vector2 direction = Vector2::Up();
+
+	//HBRUSH
 };
